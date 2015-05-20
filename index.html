@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TonyPlace</title>
+    <meta name="description" content="">
+    <meta name="author" content="xxx">
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- 通过百度手机打开网页时，百度可能会对你的网页进行转码，脱下你的衣服，往你的身上贴狗皮膏药的广告，为此可在 head 内添加 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 让360双核浏览器用webkit内核渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI，但是在iOS8.1突然被取消 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- IOS6全屏 Chrome高版本全屏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- 设置状态栏的背景颜色，只有在 "apple-mobile-web-app-capable" content="yes" 时生效 -->
+    <!-- default 默认值。
+	black 状态栏背景是黑色。
+	black-translucent 状态栏背景是黑色半透明。 如果设置为 default 或 black ,网页内容从状态栏底部开始。 如果设置为 black-translucent ,网页内容充满整个屏幕，顶部会被状态栏遮挡。 -->
+    <!-- CSS -->
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Android 主屏图标 -->
+    <link rel="icon" sizes="196x196" href="touch-icon.png">
+    <!-- IOS 主屏图标 -->
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.themes.min.css">
+    <link rel="stylesheet" href="lib/framework7/plugins/welcomescreen/welcomescreen.css">
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="#" data-panel="left" class="open-panel link icon-only">
+                            <i class="icon icon-bars"></i>
+                        </a>
+                    </div>
+                    <div class="center">TonyPlace</div>
+                    <div class="right"> </div>
+                </div>
+            </div>
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Page content-->
+                    <div class="page-content">
+                        <div class="content-block-title">分类</div>
+                        <div class="list-block">
+                            <ul id="typeList">
+                                <li class="item-content">
+                                    <div class="item-media"><i class="icon icon-f7"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title">HTML/CSS</div>
+                                        <div class="item-after"><span class="badge">0</span></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <script type="text/template7" id="TypeListTemplate">
+                                {{#each list}}
+                                <li>
+                                    <a href="demoList.html?type={{type}}" class="close-panel item-link">
+                                        <div class="item-content">
+                                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                                            <div class="item-inner">
+                                                <div class="item-title">{{name}}</div>
+                                                <div class="item-after"><span class="badge">{{total}}</span></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                {{/each}}
+                            </script>
+                            <div class="list-block-label">描述</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- First, we need to add Panel's overlay that will overlays app while panel is opened -->
+    <div class="panel-overlay"></div>
+    <!-- Left panel, let it be with reveal effect -->
+    <div class="panel panel-left layout-dark panel-reveal">
+        <div class="list-block">
+            <ul id="typeListLeft">
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="lib/framework7/plugins/welcomescreen/welcomescreen.js"></script>
+    <script src="lib/require.js" data-main="js/app"></script>
+</body>
+
+</html>

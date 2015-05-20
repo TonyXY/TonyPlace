@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS3百叶窗</title>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<style>
+	    body{
+            background: #fff
+        }
+        .box{
+            width:356px;
+            -webkit-perspective:1000;
+            -moz-perspective:1000;
+            -o-perspective:1000;
+            -ms-perspective:1000;
+            perspective:1000;
+        }
+        .box div{
+            -webkit-transform-style:preserve-3d;
+            -webkit-transition:.02s;
+            -moz-transform-style:preserve-3d;
+            -moz-transition:.02s;
+            -o-transform-style:preserve-3d;
+            -o-transition:.02s;
+            -ms-transform-style:preserve-3d;
+            -ms-transition:.02s;
+            transform-style:preserve-3d;
+            transition:.02s;
+            width:100%;
+            height: 40px;
+            background-color:#000;
+
+        }
+	</style>
+</head>
+<body>
+   <div class='box'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+   </div>
+</body>
+<script>
+    $(document).ready(function(){
+var JpgUrl = '../img/6.jpg';
+
+		function unTouchChild(theEvent,obj,fn){  
+        if (theEvent){
+            var browser=navigator.userAgent;  
+            if (browser.indexOf("Firefox")>0||browser.indexOf("Chrome")>0){  
+                if (obj.contains(theEvent.relatedTarget)) { 
+                    return;  
+                }
+            }
+            if (browser.indexOf("MSIE")>0){  
+                if (obj.contains(event.toElement)) { 
+                    return; 
+                }
+            }
+        }
+    fn();
+    }
+    var t = $('.box').offset().top;
+    var l = $('.box').offset().left;
+    $('.box').css('perspective',1000)
+    function setPon(x,y){
+        var width = $('.box div').width();
+        for(var i = 0 ; i < $('.box div').length ; i++){
+            var top = $('.box div').eq(i).offset().top;
+
+            var _dif = top-y ;
+            var _difX = x -width/2 ;
+            
+            if(y>0||y<$('.box div').length*40){
+                if(Math.abs(_dif)<120){
+									var SinX = Math.sin(_dif/40)*40 ;
+									var SinY = Math.sin(_difX/width)*5 ;
+                    $('.box div').eq(i).css({
+                        '-webkit-transform':'rotateX('+SinX+'deg) rotateY('+SinY+'deg)',
+                        '-moz-transform':'rotateX('+SinX+'deg) rotateY('+SinY+'deg)',
+                        '-o-transform':'rotateX('+SinX+'deg) rotateY('+SinY+'deg)' ,
+                        '-ms-transform':'rotateX('+SinX+'deg) rotateY('+SinY+'deg)',
+                        'transform':'rotateX('+SinX+'deg) rotateY('+SinY+'deg)'
+                    });
+                    var sha =parseInt((120-_dif)/20);
+                    $('.box div').eq(i).css({
+                        'box-shadow':'0px '+sha+'px 4px #444'
+                    });
+                }else{
+                    $('.box div').eq(i).css({
+                        '-webkit-transform':'rotateX(0deg)',
+                        '-moz-transform':'rotateX(0deg)',
+                        '-o-transform':'rotateX(0deg)' ,
+                        '-ms-transform':'rotateX(0deg)',
+                        'transform':'rotateX(0deg)' ,
+                        'box-shadow':'0px 0px 0px #444'
+                    });
+                }
+            }else{
+                $('.box div').eq(i).css({
+                    '-webkit-transform':'rotateX(0deg)',
+                    '-moz-transform':'rotateX(0deg)',
+                    '-o-transform':'rotateX(0deg)' ,
+                    '-ms-transform':'rotateX(0deg)',
+                    'transform':'rotateX(0deg)' ,
+										'box-shadow':'0px 0px 0px #444'
+                });
+            }
+        }
+    }
+
+    $('.box div').each(function(i){
+        $(this).css('background','url('+JpgUrl+') 0 '+i*-40+'px');
+    });
+    $('.box div').bind('mousemove',function(e){
+        var obj = $(this);
+        var y = e.pageY,x=e.pageX;
+        _y = y-t;
+        _x = x-l;
+        setPon(_x,_y);
+    })
+    $('.box').mouseout(function(e){
+        unTouchChild(e,$(this).get(0),function(){
+            $('.box div').css({
+                '-webkit-transform':'rotateX(0deg)',
+                '-moz-transform':'rotateX(0deg)',
+                '-o-transform':'rotateX(0deg)',
+                '-ms-transform':'rotateX(0deg)',
+                'transform':'rotateX(0deg)' ,
+								'box-shadow':'0px 0px 0px #444'
+            });
+        });
+    });
+});
+</script>
+</html>

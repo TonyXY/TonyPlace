@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="charset" content="text/html; charset=utf-8"></meta>
+	<title>实例：searchPic</title>
+	<script type="text/javascript" class="library" src="../js/jquery-1.11.0.min.js"></script>
+	<style>
+	   div, ul{
+			margin: 0;
+			padding: 0;
+		}
+        :visited {
+            outline-style: none;
+        }
+        img{
+            border: 0;
+        }
+        .main{
+            width: 720px;
+            margin: 30px auto;
+            height: 190px;
+        }
+        .imgtag{
+            float: left;
+            width: 144px;
+            height: 90px;
+            position: relative;
+        }
+        .tag_item{
+            width: 144px;
+            height: 90px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            overflow: hidden;
+        }
+        .curr{
+            z-index: 100;
+            box-shadow: 0 0 5px #000;
+            background: rgba(37, 37, 37, 0.65);
+            background: #666 9;
+        }
+        .curr img{
+            opacity: 1;
+            filter: alpha(opacity = 100);
+        }
+        .not_curr{
+            opacity: .5;
+            filter: alpha(opacity = 45);
+        }
+        .taglist{
+            height: 21px;
+            width: 46px;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 11px 11px 0;
+            background: rgba(37,37,37,0.5);
+        }
+        .taglist .tags{
+            display: block;
+            list-style: none;
+            color: #f7f7f7;
+            font-size: 12px;
+            height: 21px;
+            width: 300px;
+        }
+        .tag{
+            display: block;
+            float: left;
+            height: 21px;
+            line-height: 21px;
+            text-align: left;
+            line-height: 22px	9;
+        }
+        .tag a {
+            color: #f7f7f7;
+            text-decoration: none;
+            display: block;
+            padding: 0 3px;
+        }
+        .tag1{
+            width: 65px;
+        }
+        .tag1 a {
+            padding: 0 10px 0 10px;
+            font-weight: bold;
+        }
+        .tag2 {
+            width: 42px;
+            text-align: center;
+        }
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E7%BE%8E%E5%A5%B3|%E5%85%A8%E9%83%A8|0|1">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_meinv.jpg?0129">
+				</a>
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">美女</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">诱惑</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">写真</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">小清新</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E5%AE%A0%E7%89%A9|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_mengchong.jpg?0129">
+				</a>	
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">宠物</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">萌货</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">金毛</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">喵星人</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E6%97%85%E6%B8%B8|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_lvyoufengjing.jpg?0129">
+				</a>
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E6%91%84%E5%BD%B1|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_sheying.jpg?0129">
+				</a>
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%"  href="http://image.baidu.com/i?tn=list&word=liulan#%E5%A3%81%E7%BA%B8|%E5%85%A8%E9%83%A8|0|1">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_bizhi.jpg?0129">
+				</a>
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E6%98%8E%E6%98%9F|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_yulemingxing.jpg?0129">
+				</a>
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E6%B1%BD%E8%BD%A6|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_qiche.jpg?0129">
+				</a>	
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E8%AE%BE%E8%AE%A1|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_chuangyisheji.jpg?0129">
+				</a>	
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E6%90%9E%E7%AC%91|%E5%85%A8%E9%83%A8|0|0">
+					<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_quweigaoxiao.jpg?0129">
+				</a>	
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="imgtag">
+			<div class="tag_item">
+				<a style="height:100%; width:100%" href="http://image.baidu.com/i?tn=list&word=liulan#%E5%8A%A8%E6%BC%AB|%E5%85%A8%E9%83%A8|0|0">
+				<img style="width:100%" src="http://img.baidu.com/img/image/liulanimage/w_dongmanyouxi.jpg?0129">
+				</a>
+				<div class="taglist" style="width: 46px;">
+					<ul class="tags">
+						<li class="tag tag1"><a href="javascript:void(0)">旅游</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">九寨沟</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">美景</a></li>
+						<li class="tag tag2"><a href="javascript:void(0)">泰国</a></li>
+					</ul>
+				</div>
+			</div>		
+		</div>
+	</div>
+	<script>
+    $(function(){
+	$(".tag_item").each(function(i, target){
+		$(target).mouseenter(function(e){
+			//stop current animation.
+			$(target).stop();
+			$(target).find(".taglist").stop(false, true);
+			$(target).parent().addClass("curr");
+			$(".tag_item").not($(target)).addClass("not_curr");
+			$(target).find(".taglist").animate({
+				width: "248px"
+			}, "normal");
+			$(target).animate({
+				width: "192px",
+				height: "141px",
+				top: "-20px",
+				left: "-24px"
+			}, "normal");
+		});
+		$(target).mouseleave(function(e){
+			//stop current animation.
+			$(target).stop();
+			$(target).find(".taglist").stop(false, true);
+			$(target).parent().removeClass("curr");
+			$(".tag_item").not(target).removeClass("not_curr");
+			$(target).find(".taglist").animate({
+				width: "46px"
+			}, "normal");
+			$(target).animate({
+				width: "144px",
+				height: "90px",
+				top: "0",
+				left: "0"
+			}, "normal");
+		});
+	})
+});
+
+</script>
+</body>
+</html>

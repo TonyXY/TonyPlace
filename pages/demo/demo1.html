@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>实例：div水平垂直居中</title>
+    <style>
+        .fixMiddle {
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            width: 0;
+        }
+        .zhezhao {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            background-color: rgba(100, 100, 100, 0.4);
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+        .inner {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            background: #d83737;
+            border-radius: 3px;
+            color:#fff;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="zhezhao">
+        <i class="fixMiddle"></i>
+        <div class="inner">一直在中间哦！！</div>
+    </div>
+</body>
+</html>

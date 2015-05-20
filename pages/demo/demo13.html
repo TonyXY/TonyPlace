@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>水平的手风琴效果</title>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .h-accoridion {
+            list-style: none;
+            position: relative;
+            zoom:1;
+            width: 760px;
+            height: 170px;
+            margin: 20px auto;
+            border: 10px solid #ccc;
+            overflow: hidden;
+	          padding:0;
+        }
+        .h-accoridion li {
+            list-style: none;
+            width: 600px;
+            height: 170px;
+            background:url(../img/class_banner1.jpg) no-repeat;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        .h-accoridion li:nth-child(2) { background:url(../img/class_banner2.jpg) no-repeat;}
+        .h-accoridion li:nth-child(3) { background:url(../img/class_banner3.jpg) no-repeat;}
+        .h-accoridion li:nth-child(4) { background:url(../img/class_banner4.jpg) no-repeat;}
+        .h-accoridion li:nth-child(5) { background:url(../img/class_banner5.jpg) no-repeat;}
+        .h-accoridion li:nth-child(6) { background:url(../img/class_banner1.jpg) no-repeat;}
+    </style>
+</head>
+<body>
+<ul class="h-accoridion" id="hAcc">
+    <li class="curr"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+    <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
+    <script type="text/javascript">
+        /*
+        * author:wyysf
+        * email:540220971
+        * site:www.xh-css.cn
+        * */
+        ;(function ($) {
+            $.fn.hAccordion = function (options) {
+                $.fn.hAccordion.defaults = {
+                    "width": 600,
+                    //运动的元素的总宽度，包括边框和padding
+                    "titleWidth": 40,
+                    //显示标题的宽度
+                    "iNow": 1,
+                    //当前显示的是那个元素，最小取值为1
+                    "speed": 400, //运动的快慢单位是毫秒
+                    "easing":"easeOutQuad"
+                };
+                var opts = $.extend({}, $.fn.hAccordion.defaults, options || {});
+                if(jQuery.easing.def){
+                    jQuery.easing.def = opts.easing;
+                }
+                //
+                return this.each(function () {
+                    var $this = $(this);
+                    var aEle = $this.children();
+                    var len = aEle.length;
+                    var iW = opts.width - opts.titleWidth;
+                    var iNow = opts.iNow > len ? len : opts.iNow < 1 ? 1 : opts.iNow;
+                    var gap = opts.titleWidth;
+                    var timer = null;
+                    //计算出
+                    $this.width((len - 1) * gap + opts.width);
+                    //渲染方法
+                    function render() {
+                        aEle.each(function (i, element) {
+                            if (i < iNow) {
+                                $(this).animate({
+                                    "left": i * gap + "px"
+                                }, opts.speed);
+                            } else {
+                                $(this).animate({
+                                    "left": (i * gap) + iW + "px"
+                                }, opts.speed);
+                            }
+                        });
+                    };
+                    //初始化
+                    render();
+                    //鼠标移到事件
+                    aEle.unbind("mouseenter").bind("mouseenter", function () {
+                        var $$this = $(this);
+                        clearTimeout(timer);
+                        timer = setTimeout(function(){
+                            iNow = $$this.index() + 1;
+                            $$this.addClass("curr").siblings().removeClass("curr");
+                            render();
+                        },100);
+                    });
+                });
+            }
+        })(jQuery);
+
+        $(function(){
+            $("#hAcc").hAccordion({
+                width:600,
+                titleWidth:40,
+                iNow : 1,
+                speed:400,
+                easing:"easeOutBounce"
+            });
+        })
+    </script>
+</html>

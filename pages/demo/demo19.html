@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>许愿墙</title>
+
+    <link class="jqueryui library" rel="stylesheet" type="text/css" href="../css/jquery-ui-1.10.4.custom.css">
+    <script class="jqueryui library" src="../js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script class="jqueryui library" src="../js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+    <style>
+        #wish {
+            width: 100%;
+            height: 500px;
+            margin: 15px;
+            position: relative;
+        }
+        .wish {
+            width: 185px;height: 166px;background: url(../img/demo19/s1.png) no-repeat 0 0;color: black;padding:10px 20px 30px 20px;
+        }
+        .wish p {
+            white-space: normal;
+        }
+        .wish .close {
+            display: block;position:absolute;top:-5px;left:0px;background:url(../img/demo19/close.png) no-repeat 0 0;width:17px;height: 17px;display: none;cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wish">
+        <div>1. text</div>
+        <div>2. text</div>
+        <div>3. text</div>
+        <div>4. text</div>
+        <div>5. text</div>
+    </div>
+</body>
+<script>
+    /*
+     * tiyo wish
+     * teo.leung@gmail.com
+     */
+    (function($) {
+        $.fn.wish = function() {
+            var _this = this;
+            var _wish = _this.children();
+            var _wishs = _wish.length;
+
+            var wish = {
+                area: {
+                    left: 0,
+                    top: 0,
+                    right: _this.width(),
+                    bottom: _this.height()
+                },
+                skin: {
+                    width: 225,
+                    height: 206
+                }
+            };
+            $.extend(wish);
+
+            var _left = wish.area.left;
+            var _right = wish.area.right;
+            var _top = wish.area.top;
+            var _bottom = wish.area.bottom;
+
+            _right = _right - _left > wish.skin.width ? _right : _left + wish.skin.width;
+            _bottom = _bottom - _top > wish.skin.height ? _bottom : _top + wish.skin.height;
+
+            _right = _right - wish.skin.width;
+            _bottom = _bottom - wish.skin.height;
+
+            var methods = {
+                rans: function(v1, v2) {
+                    var ran = parseInt(Math.random() * (v2 - v1) + v1);
+                    return ran;
+                },
+                pos: function() {
+                    return {
+                        left: methods.rans(_left, _right),
+                        top: methods.rans(_top, _bottom)
+                    }
+                },
+                css: function() {
+                    return methods.rans(1, 5);
+                }
+            }
+
+            _wish.each(function(i) {
+                var _p = methods.pos();
+                var _s = methods.css();
+                var _self = $(this);
+                _self.prepend('<a class="close"></a>');
+                _self.addClass('wish').addClass('s' + _s).css({
+                    'position': 'absolute',
+                    'left': _p.left + 'px',
+                    'top': _p.top + 'px'
+                });
+                _self.hover(
+                    function() {
+                        _self.css({
+                            'z-index': '9999',
+                            'border': 'none'
+                        }).children('.close').show().bind('click', function() {
+                            _self.effect('scale', {
+                                percent: 0
+                            }, 200, function() {
+                                _self.remove()
+                            })
+                        });
+                    },
+                    function() {
+                        _self.css({
+                            'z-index': '',
+                            'border': 'none'
+                        }).children('.close').hide();
+                    });
+            });
+
+        };
+
+    })(jQuery);
+    
+    
+    $('#wish').wish();
+    $('.wish').draggable({containment: "#wish", scroll: false});
+</script>
+
+</html>

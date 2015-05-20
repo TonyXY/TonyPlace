@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.autoTextarea.js"></script>
+</head>
+<body>
+<div class="demo">
+    <h4>这里输入多行文本试试:</h4>
+    <div class="chackTextarea">
+      <textarea name="textarea" id="textarea" cols="60" rows="4" class="chackTextarea-area"></textarea>
+    </div>
+    <div class="chackTextarea">
+      <textarea name="textarea" id="textarea1" cols="60" rows="4" class="chackTextarea-area"></textarea>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".chackTextarea-area").autoTextarea({maxHeight:880});
+</script>
+</body>
+</html>
+

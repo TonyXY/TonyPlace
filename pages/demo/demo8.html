@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>mousewheel幻灯片</title>
+
+    <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.mousewheel.m.js"></script>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #000;
+            opacity: 0.8;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            margin-left: -100px;
+            overflow: hidden;
+        }
+        li {
+            float: left;
+            margin-right: 10px;
+        }
+        li a {
+            display: block;
+            width: 50px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #CCC;
+            border: 1px solid #003E7B;
+            cursor: pointer;
+        }
+        li.on a {
+            background-color: #002C57;
+            color: #FFF;
+        }
+        #mousewheel {
+            margin-top: 100px;
+            height: 520px;
+            overflow: hidden;
+        }
+        #bg {
+            width: 10000px;
+            height: 520px;
+        }
+        .list {
+            float: left;
+            width: 2000px;
+            height: 520px;
+            text-align: center;
+            opacity: 0.5;
+        }
+        #list1 {
+            background-color: #002F5E;
+        }
+        #list2 {
+            background-color: #004080;
+        }
+        #list3 {
+            background-color: #0060BF;
+        }
+        #list4 {
+            background-color: #007BF7;
+        }
+        #list5 {
+            background-color: #7BF;
+        }
+        .list img {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="on">
+            <a href="#">1</a>
+        </li>
+        <li>
+            <a href="#">2</a>
+        </li>
+        <li>
+            <a href="#">3</a>
+        </li>
+        <li>
+            <a href="#">4</a>
+        </li>
+        <li>
+            <a href="#">5</a>
+        </li>
+    </ul>
+    <div id="mousewheel">
+        <div id="bg">
+            <div id="list1" class="list">
+                <img src="../img/1.jpg" width="500" height="750" alt="美女" />
+            </div>
+            <div id="list2" class="list">
+                <img src="../img/2.jpg" width="589" height="915" alt="美女" />
+            </div>
+            <div id="list3" class="list">
+                <img src="../img/3.jpg" width="668" height="970" alt="美女" />
+            </div>
+            <div id="list4" class="list">
+                <img src="../img/4.jpg" width="620" height="405" alt="美女" />
+            </div>
+            <div id="list5" class="list">
+                <img src="../img/5.jpg" width="620" height="696" alt="美女" />
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+
+            var offset = 0,
+                bg_width = 2000,
+                index = 0,
+                delta = 0;
+            var speed = 500;
+            var isScorll = false;
+
+            function scroll() {
+                var s_l = offset + bg_width * index;
+                $("#mousewheel").animate({
+                    "scrollLeft": s_l
+                }, speed, function() {
+                    isScorll = false;
+                });
+            };
+
+            function getIndexxFromUrl() {
+                var urlAttr = [];
+                var currentUrl = window.location.href;
+                urlAttr = currentUrl.split("?");
+                index = urlAttr[1];
+                return index;
+            }
+
+            function initPage(index) {
+                index = (index != undefined) ? index : 0;
+                offset = (bg_width - $(window).width()) / 2;
+                var s_l = offset + bg_width * index;
+                $("#mousewheel").scrollLeft(s_l);
+                $("li:eq(" + index + ")").addClass("on").siblings().removeClass("on");
+            }
+
+            initPage(getIndexxFromUrl());
+
+            $(".list img").hover(
+                function() {
+                    $(this).animate({
+                        "opacity": "1"
+                    }, 300);
+                },
+                function() {
+                    $(this).animate({
+                        "opacity": "0.5"
+                    }, 300);
+                }
+            );
+
+            $("li").each(function() {
+                $(this).click(function() {
+                    if (isScorll) return;
+                    isScorll = true;
+                    index = $(this).index();
+                    $(this).addClass("on").siblings().removeClass("on");
+                    scroll();
+                });
+            });
+
+
+            $(document).mousewheel(function(e, delta) {
+                if (isScorll) return false;
+                if (delta > 0 && index > 0 && index <= 4) {
+                    index--;
+                } else if (delta < 0 && index >= 0 && index < 4) {
+                    index++;
+                };
+                $("li:eq(" + index + ")").click().addClass("on").siblings().removeClass("on");
+                return false;
+            });
+
+            $(window).resize(function() {
+                var resizeTimer = null;
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    offset = (bg_width - $(window).width()) / 2;
+                    scroll();
+                }, 200);
+            });
+        });
+    </script>
+</body>
+
+</html>

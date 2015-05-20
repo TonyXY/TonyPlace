@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>奔跑中的人CSS3</title>
+<style>
+*{padding:0;margin:0;}
+html,body{width:100%;height:100%;overflow:hidden;}
+html{-webkit-user-select:none;}
+body{background:-webkit-linear-gradient(bottom left, #fff 600px,skyblue 601px) no-repeat;}
+@-webkit-keyframes move{
+	98%{
+		display:none;
+	}
+	100%{
+		-webkit-transform:translate(1500px,350px) scale(0.5);
+		-moz-transform:translate(1500px,350px) scale(0.5);
+		transform:translate(1500px,350px) scale(0.5);
+	}
+}
+.person {
+	position:relative;
+	display:-webkit-flex;
+	-webkit-flex-direction:column;
+	-webkit-align-items:center;
+	-webkit-justify-content:center;
+	width:200px;
+	-webkit-transform:translate(-300px,100px) scale(0.5);
+	-moz-transform:translate(-300px,100px) scale(0.5);
+	transform:translate(-300px,100px) scale(0.5);
+	-webkit-animation:'move' 10s linear infinite;
+}
+
+.person div {
+	display:-webkit-flex;
+	-webkit-flex-direction:column;
+	-webkit-align-items:center;
+}
+.header {
+	width:50px;
+	height:50px;
+	-moz-border-radius:25px;
+	-webkit-border-radius:25px;
+	border:radius:25px;
+	background:#000;
+}
+.body{
+	width:8px;
+	height:130px;
+	background:#000;
+}
+.main {
+	width:50px;
+	-webkit-transform:rotate(20deg);
+	-moz-transform:rotate(20deg);
+	transform:rotate(20deg);
+	-webkit-transform-origin:bottom center;
+	-moz-transform-origin:bottom center;
+	transform-origin:bottom center;
+	
+}
+.hand{
+	width:10px;
+	position:relative;
+}
+.lefthand,.righthand, .hand .bottom{
+	-webkit-transform-origin:top left;
+	-moz-transform-origin:top left;
+	transform-origin:top left;
+}
+@-webkit-keyframes lefth{
+	100%{
+		-webkit-transform:translate(35px,-100px) rotate(-45deg);
+		-moz-transform:translate(35px,-100px) rotate(-45deg);
+		transform:translate(35px,-100px) rotate(-45deg);
+	}
+}
+@-webkit-keyframes lefthbottom{
+	100%{
+		-webkit-transform:rotate(-80deg);
+		-moz-transform:rotate(-80deg);
+		transform:rotate(-80deg);
+	}
+}
+@-webkit-keyframes righth{
+	100%{
+		-webkit-transform:translate(35px,-100px) rotate(70deg);
+		-moz-transform:translate(35px,-100px) rotate(70deg);
+		transform:translate(35px,-100px) rotate(70deg);
+	}
+}
+@-webkit-keyframes righthbottom{
+	100%{
+		-webkit-transform:rotate(-30deg);
+		-moz-transform:rotate(-30deg);
+		transform:rotate(-30deg);
+	}
+}
+.lefthand{
+	position:absolute;
+	width:10px;
+	-webkit-transform:translate(35px,-100px) rotate(70deg);
+	-moz-transform:translate(35px,-100px) rotate(70deg);
+	transform:translate(35px,-100px) rotate(70deg);
+	-webkit-animation:'lefth' 0.5s linear infinite;
+}
+.righthand{
+	position:absolute;
+	width:10px;
+	-webkit-transform:translate(35px,-100px) rotate(-45deg);
+	-moz-transform:translate(35px,-100px) rotate(-45deg);
+	transform:translate(35px,-100px) rotate(-45deg);
+	-webkit-animation:'righth' 0.5s linear infinite;
+}
+.lefthand .top,.righthand .top{
+	width:8px;
+	height:50px;
+	background:#000;
+}
+.lefthand .bottom, .righthand .bottom{
+	width:8px;
+	height:70px;
+	background:#000;
+}
+.lefthand .bottom {
+	-webkit-transform:rotate(-30deg);
+	-moz-transform:rotate(-30deg);
+	transform:rotate(-30deg);
+	-webkit-animation:'lefthbottom' 0.5s linear infinite;
+}
+.righthand .bottom {
+	-webkit-transform:rotate(-80deg);
+	-moz-transform:rotate(-80deg);
+	transform:rotate(-80deg);
+	-webkit-animation:'righthbottom' 0.5s linear infinite;
+}
+
+@-webkit-keyframes leftf{
+	100%{
+		-webkit-transform:rotate(-40deg);
+		-moz-transform:rotate(-40deg);
+		transform:rotate(-40deg);
+	}
+}
+@-webkit-keyframes leftfbottom{
+	100%{
+		-webkit-transform:rotate(10deg);
+		-moz-transform:rotate(10deg);
+		transform:rotate(10deg);
+	}
+}
+@-webkit-keyframes rightf{
+	100%{
+		-webkit-transform:rotate(60deg);
+		-moz-transform:rotate(60deg);
+		transform:rotate(60deg);
+	}
+}
+@-webkit-keyframes rightfbottom{
+	100%{
+		-webkit-transform:rotate(30deg);
+		-moz-transform:rotate(30deg);
+		transform:rotate(30deg);
+	}
+}
+.footer{
+	position:relative;
+	width:8px;
+}
+.leftfooter, .rightfooter{
+	position:absolute;
+	width:8px;
+	height:200px;
+}
+.leftfooter, .leftfooter .bottom, .rightfooter, .rightfooter .bottom {
+	-webkit-transform-origin:top right;
+	-moz-tranform-origin:top right;
+}
+
+.leftfooter {
+	-webkit-transform:rotate(60deg);
+	-moz-transform:rotate(60deg);
+	transform:rotate(60deg);
+	-webkit-animation:'leftf' 0.5s linear infinite;
+}
+.rightfooter {
+	-webkit-transform:rotate(-40deg);
+	-moz-transform:rotate(-40deg);
+	transform:rotate(-40deg);
+	-webkit-animation:'rightf' 0.5s linear infinite;
+}
+.leftfooter .top, .rightfooter .top{
+	width:8px;
+	height:80px;
+	background:#000;
+}
+.leftfooter .bottom{
+	-webkit-transform:rotate(30deg);
+	-moz-transform:rotate(30deg);
+	transform:rotate(30deg);
+	-webkit-animation:'leftfbottom' 0.5s linear infinite;
+}
+.rightfooter .bottom{
+	-webkit-transform:rotate(10deg);
+	-moz-transform:rotate(10deg);
+	transform:rotate(10deg);
+	-webkit-animation:'leftfbottom' 0.5s linear infinite;
+}
+
+.leftfooter .bottom, .rightfooter .bottom{
+	width:8px;
+	height:100px;
+	background:#000;
+}
+</style>
+</head>
+<body>
+	<div class='person'>
+		<div class='main'>
+			<div class='header'></div>
+			<div class='body'></div>
+		</div>
+		<div class='hand'>
+			<div class='lefthand'>
+				<div class='top'></div>
+				<div class='bottom'></div>
+			</div>
+			<div class='righthand'>
+				<div class='top'></div>
+				<div class='bottom'></div>
+			</div>
+		</div>
+		<div class='footer'>
+			<div class='leftfooter'>
+				<div class='top'></div>
+				<div class='bottom'></div>
+			</div>
+			<div class='rightfooter'>
+				<div class='top'></div>
+				<div class='bottom'></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

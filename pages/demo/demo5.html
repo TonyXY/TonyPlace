@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+	<title>实例：js实现的果冻抖动</title>
+	<script id="jquery_183" type="text/javascript" class="library" src="../js/jquery-1.11.0.min.js"></script>
+	<style>
+	    .test{
+            margin:10px 0px;
+            background-color:#7DBB00;
+            height:150px;
+            border:1px #ccc solid;
+            -moz-border-radius: 5px; 
+            -khtml-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+            border-radius: 10px;
+            opacity:0.8;
+        }
+	</style>
+</head>
+<body style="background-color:#e8e8e8;">
+<div style="margin:50px auto;width:900px;overflow:visible;">
+	<div id="test_01" class="test"></div>
+	<div id="test_02" class="test"></div>
+	<div id="test_03" class="test"></div>
+	<div id="test_04" class="test"></div>
+	<div id="test_05" class="test"></div>
+	<div id="test_06" class="test"></div>
+</div>
+<script>
+    $('.test').hover(function(){
+  		$(this).animate({ 
+    		width: 920,
+    		height: 170, 
+    		marginLeft: -20,
+    		opacity:0.8
+  		}, 100 ).animate({ 
+    		width: 910,
+    		height: 160, 
+    		marginLeft: -10,
+    		opacity:0.9
+  		}, 100 ).animate({ 
+    		width: 920,
+    		height: 170, 
+    		marginLeft: -20,
+    		opacity:1
+  		}, 100 )
+	},function(){
+		$(this).stop(true).animate({ 
+    		width: 900,
+    		height: 150,
+    		marginLeft: 0,
+    		opacity:0.8
+  		}, 100 );
+});
+</script>
+</body>
+</html>

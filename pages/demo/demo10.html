@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/reset.css" rel="stylesheet">
+<link href="../css/quick-layout.css" rel="stylesheet">
+<link href="../css/box.css" rel="stylesheet">
+<style>
+.h100{
+    height:100px;
+}
+
+.hct100{
+    height:100%;
+}
+</style>
+<title>实例：css3盒子布局</title>
+</head>
+<body class="ml10">
+    <div class="p10">正向排列</div>
+    <div class="ub pct20 h100">
+        <div class="ub-f1 bg-blue">水平1</div>
+        <div class="ub-f1 bg-aqua">水平2</div>
+        <div class="ub-f1 bg-teal">水平3</div>
+    </div>
+    <div class="ub-over mt10 pct20 h100">
+        <div class="ub-f1 bg-blue">垂直1</div>
+        <div class="ub-f1 bg-aqua">垂直2</div>
+        <div class="ub-f1 bg-teal">垂直3</div>
+    </div>
+    <div class="p10">逆向排列</div>
+    <div class="ub ub-drev pct20 h100">
+        <div class="ub-f1 bg-blue">水平1</div>
+        <div class="ub-f1 bg-aqua">水平2</div>
+        <div class="ub-f1 bg-teal">水平3</div>
+    </div>
+    <div class="ub-over ub-drev mt10 pct20 h100">
+        <div class="ub-f1 bg-blue">垂直1</div>
+        <div class="ub-f1 bg-aqua">垂直2</div>
+        <div class="ub-f1 bg-teal">垂直3</div>
+    </div>
+    
+    <div class="p10">对齐方式</div>
+    <div class="ub pct20 h100 bdc ub-as">
+        <div class="ub-f1 bg-blue">水平1</div>
+        <div class="ub-f1 bg-aqua">水平2</div>
+        <div class="ub-f1 bg-teal">水平3</div>
+    </div>
+    <div class="ub pct20 h100 mt10 bdc ub-ac">
+        <div class="ub-f1 bg-blue">水平1</div>
+        <div class="ub-f1 bg-aqua">水平2</div>
+        <div class="ub-f1 bg-teal">水平3</div>
+    </div>
+    <div class="ub pct20 h100 mt10 bdc ub-ae">
+        <div class="ub-f1 bg-blue">水平1</div>
+        <div class="ub-f1 bg-aqua">水平2</div>
+        <div class="ub-f1 bg-teal">水平3</div>
+    </div>
+    
+     <div class="ub-over pct20 h100 mt10 bdc ub-as">
+        <div class="ub-f1 bg-blue">垂直1</div>
+        <div class="ub-f1 bg-aqua">垂直2</div>
+        <div class="ub-f1 bg-teal">垂直3</div>
+    </div>
+    <div class="ub-over pct20 h100 mt10 bdc ub-ac">
+        <div class="ub-f1 bg-blue">垂直1</div>
+        <div class="ub-f1 bg-aqua">垂直2</div>
+        <div class="ub-f1 bg-teal">垂直3</div>
+    </div>
+    <div class="ub-over pct20 h100 mt10 bdc ub-ae">
+        <div class="ub-f1 bg-blue">垂直1</div>
+        <div class="ub-f1 bg-aqua">垂直2</div>
+        <div class="ub-f1 bg-teal">垂直3</div>
+    </div>
+</body>
+</html>

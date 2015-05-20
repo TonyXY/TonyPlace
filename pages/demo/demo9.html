@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实例：Jquery流动图片</title>
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	.sudyslider .slider-container .slides .slide{ background:url(shadow.png) repeat-x center bottom;}
+.sudyslider .slider-control { margin-top:5px; height:12px; background-color:#e5e5e5; border-radius:6px;}
+.sudyslider .slider-control .slider-widget {width:65px; height:16px; top:50%; margin-top:-8px; background-color:#0099cc; border-radius:8px; cursor:pointer;}
+	</style>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.mousewheel.m.js"></script>
+		<script type="text/javascript" src="../js/jquery.sudySlider.min.js"></script>
+<script type="text/javascript">
+var imgs = [
+	{
+		title:"百度",
+		url:'http://www.baidu.com',
+		src:'../img/1.jpg'
+	},
+	{
+		title:"腾讯",
+		url:'http://www.qq.com',
+		src:'../img/2.jpg'
+	},
+	{
+		title:"搜狐",
+		url:'http://www.sohu.com',
+		src:'../img/3.jpg'
+	},
+	{
+		title:"网易",
+		url:'http://www.163.com',
+		src:'../img/4.jpg'
+	},
+	{
+		title:"优酷",
+		url:'http://www.youku.com',
+		src:'../img/5.jpg'
+	},
+	{
+		title:"土豆",
+		url:'http://www.tudou.com',
+		src:'../img/1.jpg'
+	},
+	{
+		title:"雅虎",
+		url:'http://www.yahoo.com',
+		src:'../img/2.jpg'
+	},
+	{
+		title:"网易",
+		url:'http://www.163.com',
+		src:'../img/3.jpg'
+	},
+	{
+		title:"优酷",
+		url:'http://www.youku.com',
+		src:'../img/4.jpg'
+	},
+	{
+		title:"土豆",
+		url:'http://www.tudou.com',
+		src:'../img/5.jpg'
+	},
+	{
+		title:"雅虎",
+		url:'http://www.yahoo.com',
+		src:'../img/1.jpg'
+	}
+	];
+</script>
+</head>
+
+<body>
+<div id="slider"></div>
+</body>
+<script type="text/javascript">
+$(function(){
+	$("#slider").sudySlider();
+});
+</script>
+</html>

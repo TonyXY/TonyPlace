@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ol,li {
+            list-style: none;
+            vertical-align: middle;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
+        #slider {
+            width: 750px;
+            margin: 0 auto;
+            position: relative;
+            zoom:1;
+        }
+        .nice-change {
+            height: 320px;
+            position: relative;
+        }
+        .nice-list {
+            width: 600px;
+            height: 320px;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+        #next,#prev {
+            position: absolute;
+            top: 50%;
+            z-index: 100;
+            width: 76px;
+            height: 112px;
+            margin-top: -56px;
+            border: 0 none;
+        }
+        #prev {
+            left: 160px;
+            background: url(../img/prev.png) no-repeat;
+        }
+        #next {
+            right: 160px;
+            background: url(../img/next.png) no-repeat;
+        }
+
+    </style>
+    <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        ;(function ($) {
+            $.fn.cubeSlider = function(options){
+                $.fn.cubeSlider.defaults = {
+                    element:"li",
+                    wrap:"ol",
+                    auto:true,
+                    styles:[
+                        {width:120, height:175, top:71, left:134, zIndex:1},
+                        {width:130, height:189, top:61, left:0, zIndex:2},
+                        {width:170, height:247, top:37, left:110, zIndex:3},
+                        {width:220, height:320, top:0, left:262, zIndex:4},
+                        {width:170, height:247, top:37, left:468, zIndex:3},
+                        {width:130, height:189, top:61, left:620, zIndex:2},
+                        {width:120, height:175, top:71, left:496, zIndex:1},
+                        {width:120, height:175, top:71, left:262, zIndex:0}
+                    ],
+                    "btnPrev":"#prev",
+                    "btnNext":"#next",
+									  "direction":true,
+                    "speed":400,
+                    "interval":1000
+                }
+                var opts = $.extend({},$.fn.cubeSlider.defaults,options || {});
+                //
+                return this.each(function(){
+                    var $this = $(this);
+                    var oWrap = $this.find(opts.wrap);
+                    var tags = oWrap.find(opts.element);
+                    var prev = $(opts.btnPrev);
+                    var next = $(opts.btnNext);
+                    var timer = null;
+                    //初始化显示
+                    render();
+                    //点击按钮切换
+                    prev.click(function(){
+                        oWrap.find(opts.element).eq(0).appendTo(oWrap);
+                        render();
+                        return false;
+                    });
+                    next.click(function(){
+                        oWrap.find(opts.element).eq(-1).prependTo(oWrap);
+                        render();
+                        return false;
+                    });
+                    //判断是否自动
+                    if(opts.auto){
+                        clearInterval(timer);
+                        timer = setInterval(move,opts.interval);
+                    }
+                    //鼠标移动上面停止运动
+                    $this.on({
+                        "mouseenter":function(){
+                            clearInterval(timer);
+                        },
+                        "mouseleave":function(){
+                            timer = setInterval(move,opts.interval);
+                        }
+                    });
+                    //轮播
+                    function move(){
+											if(opts.direction){
+												prev.trigger("click");
+											}else{
+											  next.trigger("click");
+											}
+                       
+                    }
+									
+                    //渲染
+                    function render(){
+                        tags = $this.find(opts.element);
+                        tags.each(function(i,el){
+                            $(el).animate({
+                                "width":opts.styles[i].width + "px",
+                                "height":opts.styles[i].height + "px",
+                                "top":opts.styles[i].top + "px",
+                                "left":opts.styles[i].left + "px",
+                                "z-index":opts.styles[i].zIndex
+                            },opts.speed);
+                        });
+                    };
+                });
+            }
+        })(jQuery);
+        //
+        $(function () {
+            $("#slider").cubeSlider({
+                element:".nice-list",
+                wrap:".nice-change",
+							  direction:false
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="slider">
+    <button id="prev"></button>
+    <button id="next"></button>
+    <ol class="nice-change">
+        <li class="nice-list"><img src="../img/1.jpg" alt=""></li>
+        <li class="nice-list"><img src="../img/2.jpg" alt=""></li>
+        <li class="nice-list"><img src="../img/3.jpg" alt=""></li>
+        <li class="nice-list"><img src="../img/4.jpg" alt=""></li>
+        <li class="nice-list"><img src="../img/5.jpg" alt=""></li>
+        <li class="nice-list"><img src="../img/6.jpg" alt=""></li>
+    </ol>
+</div>
+</body>
+</html>
+

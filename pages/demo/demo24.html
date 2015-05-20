@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+<style type="text/css">
+.demo {padding: 30px;}
+.chackTextarea1{ margin-top:30px}
+.chackTextarea-area{  line-height: 20px; font-size: 14px; font-family: "Helvetica Neue", Helvetica, Arial;resize: none; padding: 0;border: 1px solid #CDCDCD; width: 300px;height: 100px}
+
+ol,ul{list-style:none; margin:0; padding:0}
+.topic-list li{ float:left; margin-right:15px}
+.suggest-overlay { background: none repeat scroll 0 0 #FFFFFF; width: 242px; border: 1px solid #C5C7D2; overflow-x: hidden;  border-radius: 3px 3px 3px 3px; position: absolute; z-index: 99; }
+.suggest-overlay .bd{margin: 1px;padding: 2px 8px;color: #999;background: whiteSmoke;}
+.suggest-overlay ul { color: #333333; min-width: 214px; }
+.suggest-overlay li { cursor: pointer; height: 24px; line-height: 24px;padding: 0 8px;overflow: hidden; }
+.suggest-overlay li b { font-weight: bold; }
+.suggest-overlay li span { color: #999999; }
+.suggest-overlay img { height: 20px; margin-right: 5px; vertical-align: middle; width: 20px; }
+.suggest-overlay .on { background: none repeat scroll 0 0 #E9F0F8; }
+[id^="adsbygoogle"]{display:none;position:absolute;top:-1000000px;visibility:hidden}img[src$="/680-100.jpg"]{display:none;position:absolute;top:-1000000px;visibility:hidden}</style>
+<script  src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/sodao.public.js"></script>
+<script type="text/javascript" src="../js/jQuery.insertTextarea.js"></script>
+
+<body>
+<div id="main">
+  <div id="body" class="light">
+    <div id="content" class="show">
+      <div class="demo">
+      <div class="chackTextarea">
+        <textarea name="textarea" id="textarea" cols="45" rows="5" class="chackTextarea-area"></textarea>
+        <div class=""><span id="chackTextarea-num"><em class="comment-nums-detail">0</em>/140</span>
+          <input type="submit" name="button" id="chackTextarea-fuck" value="提交">
+        </div>
+      </div>
+
+      <div class="chackTextarea1">
+        <textarea name="textarea" cols="45" rows="5" class="chackTextarea-area" id="fuckTextarea"></textarea>
+
+        <div class=""><span class="chackTextarea-num"></span>
+          <input type="submit" name="button" id="button" class="chackTextarea-btn" value="提交">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$("#textarea").insertTextarea({
+    maxLength: 140,
+    wild: true,
+    cjk: true,
+    urlCharsTag:true,
+    //maxHeight:200,
+    ATtag:true,
+    dataUrl: "b.html",
+    onInput: function(event, status) {
+        if(status. leftLength>=0){
+            $(this).parents(".chackTextarea").find(".chackTextarea-btn").attr("disabled","");
+            $(this).parents(".chackTextarea").find(".chackTextarea-btn").removeClass("chackTextarea-disabled");
+            $("#chackTextarea-num .comment-nums-detail").text( status. maxLength - status. leftLength).removeClass("chackTextarea-errortxt");
+        }else{
+            $("#chackTextarea-num .comment-nums-detail").text( status. leftLength).addClass("chackTextarea-errortxt");
+            $(this).parents(".chackTextarea").find(".chackTextarea-btn").attr("disabled","disabled");
+            $(this).parents(".chackTextarea").find(".chackTextarea-btn").addClass("chackTextarea-disabled");
+        }
+    }
+});
+$("#chackTextarea-fuck").click(function(event) {
+    console.log($("#textarea").insertTextarea().getATUserID());
+
+});
+$(".topic-phiz").find("a").click(function(event) {
+    var insertCon=$(this).attr("title");
+    $("#textarea").insertTextarea().insertText("["+insertCon+"]");
+    event.preventDefault();
+});
+
+$(".topic-diy").find("a").click(function( event){
+    var insertCon=$(this).text();
+    $("#textarea").insertTextarea().insertText(insertCon,-1);
+    event.preventDefault();
+});
+</script>
+</body></html>

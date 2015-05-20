@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+	<title>时间轴的实现方案</title>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<style>
+  	body,h2,ul,h3 {padding: 0;margin: 0;}
+
+    ul {list-style: none outside none;}
+
+    .timeline {
+        background: url("../img/demo17/line4.png") repeat-y 50px 0;
+        overflow: hidden;
+        position: relative;
+        height:100px;
+        margin: 20px 10px;
+    }
+
+    .timeline-date {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .timeline-date h2 {
+        background:url("../img/demo17/icon9.png") no-repeat 10px 0;
+        height: 87px;
+        margin-bottom: 20px;
+    }
+
+    .timeline-date h2 span {
+        color: #999999;
+        display: inline-block;
+        font-size: 22px;
+        margin: 30px 0px 0 110px;
+    }
+
+    .timeline-date ul li {
+        background: url("../img/demo17/icon7.png") no-repeat 42px 5px;
+        zoom: 1;
+        height:70px;
+    }
+
+    .timeline-date ul li h3 {
+        float: left;
+        text-align: right;
+        font-size: 14px;
+        color: #878787;
+        display: block;
+    }
+
+    .timeline-date ul li h3 span {
+        display: block;
+        color: #ADADAD;
+        font-size: 12px;
+        padding-left:15px;
+    }
+
+    .timeline-date ul li dl {
+        margin-top: -5px;
+    }
+
+    .timeline-date ul li dl.right {
+        background: url("../img/demo17/left_arrow.png") no-repeat 0 0;
+        float: left;
+        margin-left: 35px;
+        margin-top: -5px;
+        display: block;
+        background-color:#FFBB42;
+        height:40px;
+        width:216px;
+    }
+
+    .timeline-date ul li dl span{
+        display: block;
+        font-size:16px;
+        padding: 0px 10px 0px 30px;
+        color:#fff;
+        line-height: 40px;
+
+    }
+  	</style>
+  	<script language="javascript">
+	  	$(function(){
+	  		$(".timeline").eq(0).animate({
+	  			height:'600px'
+	  		},4000);
+	  	});
+  	</script>
+</head>
+<body>
+	<div class="timeline">
+	    <div class="timeline-date">
+		    <ul>
+	        	<h2 class="second" style="position: relative;">
+	        		<span>2013年</span>
+	        	</h2>
+	        	<li>
+	        		<h3>09.03<span>2013</span></h3>
+	        		<dl class="right">
+            			<span>时间轴就要成功了！</span>
+          			</dl>
+		        </li>
+	        	<li>
+	        		<h3>08.15<span>2013</span></h3>
+	        		<dl class="right">
+            			<span>为了时间轴奋斗吧！</span>
+          			</dl>
+		        </li>
+      		</ul>
+    	</div>
+	    <div class="timeline-date">
+		    <ul>
+	        	<h2 class="second" style="position: relative;">
+	        		<span>2012年</span>
+	        	</h2>
+	        	<li>
+	        		<h3>09.03<span>2012</span></h3>
+	        		<dl class="right">
+            			<span>那一年的今天！</span>
+          			</dl>
+		        </li>
+	        	<li>
+	        		<h3>08.15<span>2012</span></h3>
+	        		<dl class="right">
+            			<span>前端之路慢慢修远！</span>
+          			</dl>
+		        </li>
+      		</ul>
+    	</div>
+	</div>
+</body>
+</html>

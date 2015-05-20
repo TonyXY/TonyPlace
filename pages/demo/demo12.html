@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jQuery - rTabs选项卡插件</title>
+	<head>
+		<script type="text/javascript" class="library" src="../js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="../js/jQuery.rTabs.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				$("#tab").rTabs();
+
+				$("#tab2").rTabs({
+					bind : 'click',
+					animation : 'left'
+				});
+
+				$("#tab3").rTabs({
+					bind : 'hover',
+					animation : 'up'
+				});
+
+				$("#tab4").rTabs({
+					bind : 'hover',
+					animation : 'fadein'
+				});
+
+			})
+		</script>
+		<style>
+			body{ background:#fff;}
+			h2 {
+				width: 400px;
+				margin: 0 auto 10px auto;
+				font-size: 18px;
+				font-family: "微软雅黑";
+				color: #333;
+			}
+			.tab {
+				position: relative;
+				width: 400px;
+				height: 230px;
+				overflow: hidden;
+				margin: 0 auto 20px auto;
+				font-family: Arial;
+			}
+			.tab-nav {
+				height: 30px;
+				overflow: hidden;
+				background: #f5f5f5;
+			}
+			.tab-nav a {
+				display: block;
+				float: left;
+				width: 80px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				text-decoration: none;
+				color: #999;
+			}
+			.tab-nav a.current {
+				background: #80b600;
+				color: #fff;
+			}
+			.tab-con {
+				position: relative;
+				width: 400px;
+				height: 200px;
+				overflow: hidden;
+				background: #80b600;
+			}
+			.tab-con-item {
+				display: none;
+				width: 400px;
+				height: 180px;
+				line-height: 180px;
+				text-align: center;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>默认样式：自动运行、无动画效果、Hover事件</h2>
+		<div class="tab" id="tab">
+			<div class="tab-nav j-tab-nav">
+				<a href="javascript:void(0);" class="current">Tab1</a>
+				<a href="javascript:void(0);">Tab2</a>
+				<a href="javascript:void(0);">Tab3</a>
+				<a href="javascript:void(0);">Tab4</a>
+				<a href="javascript:void(0);">Tab5</a>
+			</div>
+			<div class="tab-con">
+				<div class="j-tab-con">
+					<div class="tab-con-item" style="display:block;">
+						111111
+					</div>
+					<div class="tab-con-item">
+						222222
+					</div>
+					<div class="tab-con-item">
+						333333
+					</div>
+					<div class="tab-con-item">
+						444444
+					</div>
+					<div class="tab-con-item">
+						555555
+					</div>
+				</div>
+			</div>
+		</div>
+		<h2>自动运行、向左滚动、点击事件</h2>
+		<div class="tab" id="tab2">
+			<div class="tab-nav j-tab-nav">
+				<a href="javascript:void(0);" class="current">Tab1</a>
+				<a href="javascript:void(0);">Tab2</a>
+				<a href="javascript:void(0);">Tab3</a>
+				<a href="javascript:void(0);">Tab4</a>
+				<a href="javascript:void(0);">Tab5</a>
+			</div>
+			<div class="tab-con">
+				<div class="j-tab-con">
+					<div class="tab-con-item" style="display:block;">
+						111111
+					</div>
+					<div class="tab-con-item">
+						222222
+					</div>
+					<div class="tab-con-item">
+						333333
+					</div>
+					<div class="tab-con-item">
+						444444
+					</div>
+					<div class="tab-con-item">
+						555555
+					</div>
+				</div>
+			</div>
+		</div>
+		<h2>自动运行、向上滚动、Hover事件</h2>
+		<div class="tab" id="tab3">
+			<div class="tab-nav j-tab-nav">
+				<a href="javascript:void(0);" class="current">Tab1</a>
+				<a href="javascript:void(0);">Tab2</a>
+				<a href="javascript:void(0);">Tab3</a>
+				<a href="javascript:void(0);">Tab4</a>
+				<a href="javascript:void(0);">Tab5</a>
+			</div>
+			<div class="tab-con">
+				<div class="j-tab-con">
+					<div class="tab-con-item" style="display:block;">
+						111111
+					</div>
+					<div class="tab-con-item">
+						222222
+					</div>
+					<div class="tab-con-item">
+						333333
+					</div>
+					<div class="tab-con-item">
+						444444
+					</div>
+					<div class="tab-con-item">
+						555555
+					</div>
+				</div>
+			</div>
+		</div>
+		<h2>自动运行、渐入、Hover事件</h2>
+		<div class="tab" id="tab4">
+			<div class="tab-nav j-tab-nav">
+				<a href="javascript:void(0);" class="current">Tab1</a>
+				<a href="javascript:void(0);">Tab2</a>
+				<a href="javascript:void(0);">Tab3</a>
+				<a href="javascript:void(0);">Tab4</a>
+				<a href="javascript:void(0);">Tab5</a>
+			</div>
+			<div class="tab-con">
+				<div class="j-tab-con">
+					<div class="tab-con-item" style="display:block;">
+						111111
+					</div>
+					<div class="tab-con-item">
+						222222
+					</div>
+					<div class="tab-con-item">
+						333333
+					</div>
+					<div class="tab-con-item">
+						444444
+					</div>
+					<div class="tab-con-item">
+						555555
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

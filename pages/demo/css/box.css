@@ -1,0 +1,58 @@
+/*盒子模型*/
+
+/*水平排列*/
+.ub{
+    display: -webkit-box;
+	display: -moz-box; 
+	display: box;
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    box-orient: horizontal;
+    position:relative;
+}
+
+/*垂直排列*/
+.ub-over{
+    display: -webkit-box;
+	display: -moz-box; 
+	display: box;
+    -moz-box-orient:vertical;
+    -webkit-box-orient:vertical;
+    box-orient:vertical;
+    position:relative;
+}
+
+/*垂直居中对齐*/
+.ub-ac{
+	-webkit-box-align:center;
+	-moz-box-align:center;
+	box-align:center;
+}
+
+/*顶部对齐*/
+.ub-as{
+	-webkit-box-align:start;
+	-moz-box-align:start;
+	box-align:start;
+}
+
+/*底部对齐*/
+.ub-ae{
+	-webkit-box-align:end;
+	-moz-box-align:end;
+	box-align:end;
+}
+/* 反向排列*/
+.ub-drev{
+    -moz-box-direction: reverse;
+    -webkit-box-direction: reverse;
+    box-direction: reverse;
+}
+
+.ub-f1{
+	position:relative;
+	-webkit-box-flex: 1; 
+	box-flex: 1;
+}
+
+

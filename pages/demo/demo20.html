@@ -5,70 +5,83 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>canvas 圆环百分比</title>
     <style>
+    body{
+        width:100%;
+        margin:0;
+        padding:0;
+    }
         #canvas {
             display: block;
-            margin: 100px auto;
         }
     }
     </style>
 </head>
 
 <body>
+    <input id="precent" type="text" value="7.2" style="display:none;">
     <canvas id="canvas" width="300" height="300">
 </body>
 <script>
     window.onload = function() {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
+        canvas.width=600;
+        canvas.height=600;
         var W = canvas.width;
         var H = canvas.height;
+        canvas.style.width="300px";
+        canvas.style.height="300px";
+        
         var deg = 0,
-            new_deg = 0,
             dif = 0;
         var loop, re_loop;
         var text, text_w;
-
         function init() {
             ctx.clearRect(0, 0, W, H);
             ctx.beginPath();
-            ctx.strokeStyle = "#333";
-            ctx.lineWidth = 30;
-            ctx.arc(W / 2, H / 2, 100, 0, Math.PI * 2, false);
+            ctx.strokeStyle = "#eee";
+            ctx.lineWidth = 5;
+            ctx.arc(W / 2, H / 2, 250, 0, Math.PI * 2, false);
             ctx.stroke();
-
-            var r = deg * Math.PI / 180;
-            ctx.beginPath();
-            ctx.strokeStyle = "#46a9f2";
-            ctx.lineWidth = 30;
-            ctx.arc(W / 2, H / 2, 100, 0 - 90 * Math.PI / 180, r - 90 * Math.PI / 180, false);
-            ctx.stroke();
-
-            ctx.fillStyle = "#f00";
-            ctx.font = "50px abc";
-            text = Math.floor(deg / 360 * 100) + "%";
+            ctx.fillStyle = "#ff7300";
+            ctx.font = "25px microsoft yahei";
+            text = "%";
+            ctx.fillText(text, W-110, H / 2 + 15);
+            ctx.fillStyle = "#aaa";
+            ctx.font = "14px microsoft yahei";
+            text = "预期年化收益率";
             text_w = ctx.measureText(text).width;
-            ctx.fillText(text, W / 2 - text_w / 2, H / 2 + 15);
+            ctx.fillText(text, W / 2 - text_w / 2, H / 2 + 38);
+            var r = (deg*360/100) * Math.PI / 180;
+            ctx.beginPath();
+            ctx.strokeStyle = "#ff7300";
+            ctx.lineWidth = 5;
+            ctx.arc(W / 2, H / 2, 250, 0 - 90 * Math.PI / 180, r - 90 * Math.PI / 180, false);
+            ctx.stroke();
+            ctx.fillStyle = "#ff7300";
+            ctx.font = "50px microsoft yahei";
+            text = parseFloat(deg).toFixed(1);
+            text_w = ctx.measureText(text).width;
+            ctx.fillText(text, W / 2 - text_w / 2-10, H / 2 + 15);
         }
-
         function draw() {
-            new_deg = Math.round(Math.random() * 360);
             dif = new_deg - deg;
-            loop = setInterval(to, 1000 / dif);
+            loop = setInterval(to, 800 / dif);
         }
-
         function to() {
-            if (deg == new_deg) {
+            if (deg >= new_deg) {
                 clearInterval(loop);
             }
             if (deg < new_deg) {
-                deg++;
-            } else {
-                deg--;
+                deg += 1-Math.floor(Math.random()*5)/10;
+            } 
+            if(deg >= new_deg){
+                deg = new_deg;
             }
             init();
         }
+        new_deg = document.getElementById('precent').value;
         draw();
-        re_loop = setInterval(draw, 2000);
     }
 </script>
 
